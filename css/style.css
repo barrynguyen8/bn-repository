@@ -103,9 +103,9 @@ ul.b {
 
 @media only screen and (max-device-width: 600px) {
     .main-frame{
-    margin-left:auto;
+    margin-left:70;
     }
     .main{
-        font-size:20px
+        font-size:20px; margin-left:0%;
         }
     }
