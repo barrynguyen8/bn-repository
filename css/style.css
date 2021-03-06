@@ -100,11 +100,12 @@ ul.b {
     font-size:20px; margin-left:10%; margin-right:40%
     }
 
+
 @media only screen and (max-device-width: 600px) {
     .main-frame{
-        margin-left:40%; 
+    margin-left:auto;
     }
     .main{
-        margin-right:60%
+        font-size:20px; margin-left:5%; margin-right:20%
+        }
     }
-}
