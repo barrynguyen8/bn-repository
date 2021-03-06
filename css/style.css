@@ -101,7 +101,7 @@ ul.b {
     }
 
 @media screen  
-and (max-device-width: 850px) {
+and (max-device-width: 480px) {
     .main-frame{
     top: 30%;
     }
