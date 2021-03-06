@@ -104,4 +104,9 @@ ul.b {
     .main-frame{
         margin-left:70%; 
     }
+    .main{
+        font-size:20px; 
+        margin-left:10%; 
+        margin-right:20%
+    }
 }
