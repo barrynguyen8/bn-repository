@@ -100,8 +100,7 @@ ul.b {
     font-size:20px; margin-left:10%; margin-right:40%
     }
 
-@media screen  
-and (max-device-width: 480px) {
+@media only screen and (max-device-width: 480px) {
     .main-frame{
     top: 30%;
     }
