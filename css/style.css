@@ -102,9 +102,6 @@ ul.b {
 
 @media only screen and (max-width: 375px) {
     .main-frame{
-        margin-left:20px;
-        }
-    .main{
-        margin-right: 50px;
+        margin-left:70px;
         }
     }
