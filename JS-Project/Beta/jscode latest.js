@@ -10,6 +10,7 @@ function getLocation() {
     return "Geolocation is not supported by this browser."; 
   }
 }
+
 getLocation();
 
 function fetchQuery(query) {
@@ -24,13 +25,14 @@ function getDefaultResults(position) {
         .then(displayResults);
 }
 
-const forecastEl = document.querySelectorAll('section');
-const iconForecast = forecastEl[0];
-const tempForecast = forecastEl[1];
-const dayForecast = forecastEl[2];
+const ForecastEl = document.querySelectorAll('section');
+const iconForecast = ForecastEl[0];
+const tempForecast = ForecastEl[1];
+const dayForecast = ForecastEl[2];
 
 function displayForecastResults(weatherForecast) {
-  forecastEl.innerText = `${weatherForecast.daily[0].dt} ${weatherForecast.daily[1].temp.day} date/time`;
+  console.log(weatherForecast);
+  ForecastEl.innerText = `${weatherForecast.daily[0].dt} ${weatherForecast.daily[1].temp.day} date/time`;
   tempForecast.innerText = `${Math.round(weatherForecast.daily[1].temp.day)}°C   ${Math.round(weatherForecast.daily[2].temp.day)}°C   ${Math.round(weatherForecast.daily[3].temp.day)}°C   ${Math.round(weatherForecast.daily[4].temp.day)}°C   ${Math.round(weatherForecast.daily[5].temp.day)}°C   ${Math.round(weatherForecast.daily[6].temp.day)}°C   ${Math.round(weatherForecast.daily[7].temp.day)}°C`; 
 }
 
@@ -41,40 +43,29 @@ searchbox.addEventListener('keypress', getResultsSearchbox);
 
 function getResultsDropdown(event) { 
   const dropdownValue = event.target.value 
-  const bodyEl = document.getElementsByTagName("body"); 
-  
-  switch(dropdownValue) {
-    case "ho chi minh":
+  const bodyEl = document.getElementsByTagName("body");
+    if (dropdownValue === "ho chi minh") {
       bodyEl[0].style.backgroundImage = 'url("./images/hochiminh.jpeg")';
-      break;
-    case "san francisco":
+    } else if (dropdownValue === "san francisco") {
       bodyEl[0].style.backgroundImage = 'url("./images/goldengatebridge.jpeg")';
-      break;
-    case "melbourne,au":
+    } else if (dropdownValue === 'melbourne,au') {
       bodyEl[0].style.backgroundImage = 'url("./images/melbourne.jpeg")';
-      break; 
-    case "sydney":
+    } else if (dropdownValue === "sydney") {
       bodyEl[0].style.backgroundImage = 'url("./images/sydney.jpeg")';
-      break;
-    case "new york":
+    } else if (dropdownValue === "new york") {
       bodyEl[0].style.backgroundImage = 'url("./images/new_york.jpeg")';
-      break;
-    case "london":
+    } else if (dropdownValue === "london") {
       bodyEl[0].style.backgroundImage = 'url("./images/london.jpeg")';
-      break;
-    case "shanghai":
+    } else if (dropdownValue === "shanghai") {
       bodyEl[0].style.backgroundImage = 'url("./images/shanghai.jpeg")';
-      break;
-    case "paris":
+    } else if (dropdownValue === "paris") {
       bodyEl[0].style.backgroundImage = 'url("./images/paris.jpeg")';
-      break;
-    case "tokyo":
+    } else if (dropdownValue === "tokyo") {
       bodyEl[0].style.backgroundImage = 'url("./images/tokyo.jpeg")';
-      break;
-    case "beijing":
-      bodyEl[0].style.backgroundImage = 'url("./images/beijing.jpeg")';
-      break;
-  }  
+    } else if (dropdownValue === "beijing") {
+      bodyEl[0].style.backgroundImage = 'url("./images/beijing.jpeg")';  
+    }
+  
   fetchQuery(dropdownValue);
 }
 
@@ -138,4 +129,9 @@ function dateBuilder(d) {
 
     return `${day} ${date} ${month} ${year}`;
 }
+
+
+
+
+
 
