@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 
 import Posts from './components/Posts'
+import PostForm from './components/Postform'
 
 function App() {
   return (
@@ -20,6 +21,8 @@ function App() {
           Learn React
         </a>
       </header>
+      <PostForm />
+      <hr />
       <Posts />
     </div>
   );
