@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import axios from 'axios'
 
 import EventsList from './EventsList'
@@ -8,14 +7,13 @@ import FormErrors from './FormErrors'
 
 import validations from '../validations'
 
-import PropTypes from 'prop-types'
-
+import './Healthaide.css'
 
 class Healthaide extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      events: this.props.events,
+      events: [],
       title: {value: '', valid: false},
       start_datetime: {value: '', valid: false},
       location: {value: '', valid: false},
@@ -37,6 +35,16 @@ class Healthaide extends React.Component {
     ]
   }
 
+  componentDidMount() {
+    axios({
+      method: 'GET',
+      url: 'http://127.0.0.1:3000/events'
+    })
+    .then(response => {
+      this.setState({events: response.data})
+    })
+  }
+
   handleInput = e => {
     e.preventDefault()
     const name = e.target.name
@@ -54,21 +62,21 @@ class Healthaide extends React.Component {
     this.setState({formErrors: {}})
   }
   handleSubmit = e => {
+    console.log("HANDLE SUBMIT")
     e.preventDefault()
     let newEvent = { title: this.state.title.value, start_datetime: this.state.start_datetime.value, location: this.state.location.value }
     axios({
       method: 'POST',
-      url: '/events',
+      url: 'http://localhost:3000/events',
       data: { event: newEvent },
-      headers: {
-        'X-CSRF-Token': document.querySelector("meta[name=csrf-token]").content
-      }
     })
     .then(response => {
+      console.log("EVENTS SUBMITTED")
       this.addNewEvent(response.data)
       this.resetFormErrors()
     })
     .catch(error => {
+      console.log("EVENTS SUBMIT ERROR")
       console.log(error.response.data)
       this.setState({formErrors: error.response.data})
     })
@@ -115,15 +123,5 @@ class Healthaide extends React.Component {
   }
 }
 
-Healthaide.propTypes = {
-  events: PropTypes.array.isRequired
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-    const node = document.getElementById('events_data')
-    const data = JSON.parse(node.getAttribute('data'))
-    ReactDOM.render(
-      <Healthaide events={data} />,
-      document.body.appendChild(document.createElement('div')),
-    )
-})
+export default Healthaide
