@@ -68,6 +68,7 @@ class Healthaide extends React.Component {
     axios({
       method: 'POST',
       url: 'http://localhost:3000/events',
+      headers: JSON.parse(localStorage.user),
       data: { event: newEvent },
     })
     .then(response => {
