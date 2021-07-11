@@ -1,6 +1,7 @@
 import React from 'react'
 import Login from './components/Login'
 import Healthaide from './components/Healthaide'
+import AppHeader from './components/AppHeader'
 
 const currentUser = function() {
   const user = localStorage.getItem('user')
@@ -11,7 +12,7 @@ const currentUser = function() {
 function App() {
   return (
     <div className="App">
-      <h1>HealthAide</h1>
+      <AppHeader />
       {currentUser() ? <Healthaide /> : <Login />}
     </div>
   );
