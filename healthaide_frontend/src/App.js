@@ -4,6 +4,7 @@ import Signup from './components/Signup'
 import AppHeader from './components/AppHeader'
 import Healthaide from './components/Healthaide'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import Event from './components/Event'
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
       <Route exact path="/signup">
         {currentUser ? <Redirect to="/" /> : <Signup />}
       </Route>
+      <Route exact path="/events/:id" render={routeProps => (
+        <Event {...routeProps} />
+      )} />
     </Router>
   )
 }

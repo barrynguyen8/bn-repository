@@ -32,7 +32,7 @@ function AppHeader() {
         }
       </div>
       <Link to="/" style={{textDecoration: 'none', color: 'black'}}>
-        <h1 className="logo">Eventlite</h1>
+        <h1 className="logo">Healthaide</h1>
       </Link>
     </div>
   )
