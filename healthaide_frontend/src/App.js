@@ -5,6 +5,7 @@ import AppHeader from './components/AppHeader'
 import Healthaide from './components/Healthaide'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 import Event from './components/Event'
+import EventForm from './components/EventForm'
 
 
 function App() {
@@ -25,6 +26,11 @@ function App() {
       </Route>
       <Route exact path="/events/:id" render={routeProps => (
         <Event {...routeProps} />
+      )} />
+      <Route exact path="/events/:id/edit" render={routeProps => (
+        currentUser ?
+          <EventForm {...routeProps} /> :
+          <Redirect to='/login' />
       )} />
     </Router>
   )
