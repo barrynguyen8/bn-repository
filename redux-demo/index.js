@@ -2,6 +2,11 @@ const redux = require('redux')
 const createStore = redux.createStore 
 const combineReducers = redux.combineReducers 
 
+// logger middleware 
+const reduxLogger = require('redux-logger')
+const logger = reduxLogger.createLogger() 
+const applyMiddleware = redux.applyMiddleware
+
 //CREATE ACTION
 
 const BUY_CAKE = 'BUY_CAKE' // define string constant indicates type of bindActionCreators
@@ -64,9 +69,9 @@ const rootReducer = combineReducers({
     iceCream: iceCreamReducer
 })
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, applyMiddleware(logger))
 console.log('Initial state', store.getState())
-const unsubscribe = store.subscribe(() => console.log('Updated state', store.getState())) //add listener to store
+const unsubscribe = store.subscribe(() => {}) //add listener to store
 store.dispatch(buyCake())
 store.dispatch(buyCake())
 store.dispatch(buyCake())
