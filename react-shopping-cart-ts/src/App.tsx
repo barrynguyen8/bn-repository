@@ -28,7 +28,7 @@ const App = () => {
 
   const getTotalItems = () => null;
 
-  const handleAddToCart = () => null;
+  const handleAddToCart = (clickedItm: CartItemType) => null;
 
   const handleRemoveFromCart = () => null;
 
