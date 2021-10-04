@@ -10,7 +10,7 @@ import Badge from '@material-ui/core/Badge';
 import { Wrapper } from './App.styles';
 // Types
 export type CartItemType = {
-  id:number;
+  id: number;
   category: string;
   description: string;
   image: string;
@@ -19,12 +19,12 @@ export type CartItemType = {
   amount: number; 
 }
 
-
-
-const getProducts = async (): Promise<CartItemType> =>
-  await (await fetch('https://fakestoreapi.com/prodcuts')).json(); 
+const getProducts = async (): Promise<CartItemType[]> =>
+  await (await fetch('https://fakestoreapi.com/products')).json(); 
 
 const App = () => {
+  const { data, isLoading, error} = useQuery<CartItemType[]>('products', getProducts);
+  console.log(data);
   return (
     <div className="App">
       Start
